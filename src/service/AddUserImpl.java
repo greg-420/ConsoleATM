@@ -10,11 +10,5 @@ class AddUserImpl implements AddUser{
 		// dummy method
 		return false;
 	}
-
-	@Override
-	public void addUser(User refUser, Database refDatabase) {
-		// dummy method
-		return;
-	}
 	
 }
