@@ -14,5 +14,11 @@ public class Database {
 		return;
 	}
 	
-	
+	public boolean searchEmail(String email){ //return true if there is a match, false if email is new.
+		for (User element: userDatabase){
+			if (element.getString(2).equals(email))
+				return true;
+		}
+		return false;
+	}
 }
