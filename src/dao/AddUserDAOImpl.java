@@ -7,8 +7,7 @@ public class AddUserDAOImpl implements AddUserDAO{
 
 	@Override
 	public void addUser(User refUser, Database refDatabase) {
-		// TODO Auto-generated method stub
+		// push a user onto the database.
 		refDatabase.addUser(refUser);
 	}
-
 }

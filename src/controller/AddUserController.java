@@ -1,6 +1,11 @@
 package controller;
 
 import java.util.Scanner;
+import pojo.User;
+import service.AddUser;
+import service.AddUserImpl;
+import pojo.Database;
+
 
 public class AddUserController {
 
@@ -26,39 +31,38 @@ public class AddUserController {
 		return true;
 	}
 
-	void enterEmail(Scanner sc, String email) {
+	void enterEmail(Scanner sc, User refUser) {
 		System.out.println("Enter email address: ");
-		email = sc.nextLine();
+		String email = sc.nextLine();
+		refUser.setString(2, email);
 	}
 
-	void enterColor(Scanner sc, String color) {
+	void enterColor(Scanner sc, User refUser) {
 		System.out.println("What is your favourite colour?");
-		color = sc.nextLine();
+		String color = sc.nextLine();
+		refUser.setString(3, color);
 	}
 
-	void enterString(int arg) {
-		Scanner sc = new Scanner(System.in);
-		String pass1 = null; 
-		String pass2 = null; 
-		String email = null;
-		String color = null;
-		if (arg == 1) // pass mode
-		{
-			if (!enterPass(sc, pass1, pass2))
-				return;
-			System.out.println("Password creation successful");
-		}
+	void enterString(int arg, Scanner sc, User refUser ) {
+		
 		if (arg == 2)
-			enterEmail(sc, email);
-		if (arg == 3)
-			enterColor(sc, color);
-		else
-			return;
+			enterEmail(sc, refUser);
+		return;
 	}
 
 	public void userInput() {
 		System.out.println("Creating new user");
-		enterString(2);
-		enterString(1);
+		
+		//intialize variables
+		Scanner sc = new Scanner(System.in);
+		User refUser = new User();
+		Database refDatabase = new Database();
+		
+		//ask for info
+		enterString(2, sc, refUser); 
+		AddUser refAddUser = new AddUserImpl();
+		refAddUser.addUser(refUser, refDatabase);
+		refDatabase.printUsers();
+		refDatabase.printNumUsers();
 	} //if you pass all the checks, then you are added as a new user. 
 }

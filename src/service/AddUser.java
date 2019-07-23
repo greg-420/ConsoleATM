@@ -3,6 +3,6 @@ package service;
 import pojo.User;
 import pojo.Database;
 
-interface AddUser{
-	boolean checkUser (User refUser);
+public interface AddUser{
+	void addUser (User refUser, Database refDatabase);
 }

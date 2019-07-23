@@ -1,16 +1,12 @@
 package pojo;
 
 public class User {
-	private int id;
 	private String password;
 	private String email;
 	private String color;
-	
-	int getID(){
-		return this.id;
-	}
-	
-	String getString(int arg){
+
+	//1 for password, 2 for email, 3 for color.
+	public String getString(int arg){
 		if (arg == 1)
 			return password;
 		if (arg == 2)
@@ -21,17 +17,14 @@ public class User {
 		return "";
 	}
 	
-	void setID(int newID){
-		this.id = newID;
-	}
 	
-	void setString(int arg, String newString){
+	public void setString(int arg, String newString){
 		if (arg == 1)
 			this.password = newString;
-		if (arg == 2)
+		else if (arg == 2)
 			this.email = newString;
-		if (arg == 3)
+		else if (arg == 3)
 			this.color = newString;
-		System.out.println("setString selection error!");
+		else System.out.println("setString selection error!");
 	}
 }
