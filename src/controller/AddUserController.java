@@ -10,11 +10,20 @@ import pojo.Database;
 public class AddUserController {
 
 
-	void enterPass(Scanner sc, String pass1, String pass2) {
+	boolean enterPass(Scanner sc, User refUser) {
 		System.out.println("Enter Password: ");
-		pass1 = sc.nextLine();
+		String pass1 = sc.nextLine();
 		System.out.println("Re-type Password: ");
-		pass2 = sc.nextLine();
+		String pass2 = sc.nextLine();
+		if (pass1.equals(pass2))
+		{
+			refUser.setString(1, pass2);
+			return true;
+		}
+		else {
+			System.out.println("Password doesn't match!");
+			return false;
+		}
 	}
 
 	void enterEmail(Scanner sc, User refUser) {
@@ -31,9 +40,7 @@ public class AddUserController {
 
 	void enterString(int arg, Scanner sc, User refUser ) {
 		if (arg == 1) {
-			String pass1 = null;
-			String pass2 = null;
-			enterPass(sc, pass1, pass2);
+			enterPass(sc, refUser);
 		}
 		
 		if (arg == 2)
@@ -51,7 +58,7 @@ public class AddUserController {
 		
 		//ask for email
 		enterString(2, sc, refUser); 
-		if (refAddUser.checkEmail(refUser.getString(2), refDB))
+		if (refAddUser.checkEmail(refUser.getString(2), refDB)) //todo: swap logic. pass all checks then add user.
 			refAddUser.addUser(refUser, refDB);
 		else System.out.println("email already exists!!");
 		
