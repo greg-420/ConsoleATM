@@ -17,6 +17,7 @@ public class Database {
 	public void printUsers(){ //print all user emails in the database
 		for (User element: userDatabase){
 			System.out.println(element.getString(2));
+		System.out.println("");
 		}
 	}
 	
@@ -28,11 +29,11 @@ public class Database {
 		System.out.println("There are " + i + " total users.");
 	}
 	
-	public boolean searchEmail(String email){ //return true if there is a match, false if email is new.
+	public boolean searchEmail(String email){ //return false if there is a match, true if email is new.
 		for (User element: userDatabase){
 			if (element.getString(2).equals(email))
-				return true;
+				return false;
 		}
-		return false;
+		return true;
 	}
 }

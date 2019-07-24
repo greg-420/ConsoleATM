@@ -13,15 +13,15 @@ public class ATM {
 		int arg;
 		Scanner sc = new Scanner(System.in);
 		User refUser = new User();
-		Database refDatabase = new Database();
+		Database refDB = new Database();
 		
 		for (;;){ 
 				System.out.print("User Home Page: \n1. Register \n2. Login \n3. Forget Password \n4. Logout\n\nEnter Your Choice: \n");
 		
-				arg = Integer.valueOf(sc.nextLine());
+				arg = sc.nextInt();
 				if (arg == 1) {
 					AddUserController refAddUserController = new AddUserController();
-					refAddUserController.userInput();
+					refAddUserController.userInput(refDB);
 					}
 				if (arg == 4) {
 					System.out.println("Logout Successfully!!!");
