@@ -1,6 +1,7 @@
 package application;
 
 import controller.AddUserController;
+import controller.BalanceController;
 import controller.ForgetPasswordController;
 import controller.LoginController;
 
@@ -36,9 +37,10 @@ public class ATM {
 						System.out.println("Login Unsuccessful!");
 					}
 					else {
-						//enter bank balance mode
-						//todo: write this.
-					}
+						System.out.println("Login Successful!!");			
+						BalanceController refBC = new BalanceController();
+						refBC.balance(sc, refDB, currentUser);
+						}
 				}
 				if (arg == 3) {
 					ForgetPasswordController refFP = new ForgetPasswordController();

@@ -4,6 +4,7 @@ public class User {
 	private String password;
 	private String email;
 	private String color;
+	private double balance = 0;
 
 	//1 for password, 2 for email, 3 for color.
 	public String getString(int arg){
@@ -26,5 +27,13 @@ public class User {
 		else if (arg == 3)
 			this.color = newString;
 		else System.out.println("setString selection error!");
+	}
+	
+	public double getBalance() {
+		return balance;
+	}
+	
+	public void setBalance(double newBalance) {
+		this.balance = newBalance;
 	}
 }

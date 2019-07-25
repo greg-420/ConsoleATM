@@ -11,10 +11,7 @@ public class LoginDAOImpl implements LoginDAO {
 		if (tempusr == null)
 			return null;
 		if (tempusr.getString(1).equals(password))
-		{
-			System.out.println("Login Successful!!");
 			return tempusr;
-		}
 		return null;
 	}
 
