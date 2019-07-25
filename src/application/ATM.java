@@ -55,7 +55,7 @@ public class ATM {
 						System.out.println("Login Unsuccessful!");
 					}
 					else {
-						System.out.println("Login Successful!!");			
+						System.out.println("\nLogin Successful!!");			
 						BalanceController refBC = new BalanceController();
 						refBC.balance(sc, refDB, currentUser);
 						}
@@ -68,7 +68,7 @@ public class ATM {
 						System.out.println("No such function!");
 				}
 		while (arg != 4);
-		System.out.println("Logout Successfully!!!");
+		System.out.println("\nLogout Successfully!!!");
 		}
 	}
 

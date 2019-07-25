@@ -16,7 +16,7 @@ public class BalanceController {
 		System.out.print("Type 1: Check Available Bank Balance\nType 2: Deposit Amount \nType 3: Withdraw Amount\n");
 		do {
 			while (true){
-				System.out.println("Enter Your Choice: ");
+				System.out.print("\nEnter Your Choice: ");
 				try{
 					arg = sc.nextInt();
 					if (arg >= 1 && arg <=3)
@@ -27,10 +27,10 @@ public class BalanceController {
 					//do nothing here
 				}
 				sc.nextLine();
-				System.out.println ("Error! Please enter an integer between 1 and 3. ");
+				System.out.println("Error! Please enter an integer between 1 and 3. ");
 			}
 			if (arg == 1) { //check balance
-				System.out.printf("Available Balance: %.2f\n", refUser.getBalance());
+				System.out.printf("\nAvailable Balance: %.2f\n", refUser.getBalance());
 			}
 			if (arg == 2) { //deposit amount
 				BalanceService refBS = new BalanceServiceImpl();
@@ -40,7 +40,7 @@ public class BalanceController {
 				BalanceService refBS = new BalanceServiceImpl();
 				refBS.withdraw(refUser, refDB, sc);
 			} 
-			System.out.print("Wish to Continue? (y/n): ");
+			System.out.print("\nWish to Continue? (y/n): ");
 			sc.nextLine();
 			c = sc.nextLine();
 			while (!c.equals("n") && !c.equals("y"))
@@ -50,6 +50,6 @@ public class BalanceController {
 				}
 		} while (c.equals("y"));
 		
-		System.out.println("Thanks for Banking with Us !!!");
+		System.out.println("\nThanks for Banking with Us !!!");
 	}
 }

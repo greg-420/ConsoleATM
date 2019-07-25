@@ -62,7 +62,7 @@ public class AddUserController {
 		enterString(2, sc, refUser); 
 		while (!refAddUser.checkEmail(refUser.getString(2), refDB))
 			{	
-				System.out.println("email already exists!!");
+				System.out.println("\nemail already exists!!");
 				enterString(2, sc, refUser);
 			}
 		enterString(1, sc, refUser);

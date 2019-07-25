@@ -12,10 +12,13 @@ public class BalanceServiceImpl implements BalanceService {
 	public void withdraw(User usr, Database db, Scanner sc) {
 		double amount;
 		while (true){
-			System.out.println("Enter Amount: ");
+			System.out.println("\nEnter Amount: ");
 			try {
 				amount = sc.nextDouble();
-				break;
+				if (amount >=0)
+					break;
+				else 
+					System.out.println("\nAmount can't be negative!!");
 			}
 			catch (InputMismatchException e){
 				//do nothing here
@@ -23,16 +26,11 @@ public class BalanceServiceImpl implements BalanceService {
 			System.out.println("Please enter a number.");
 			sc.nextLine();
 		}
-		
-		while (amount < 0) {
-			System.out.println("Amount can't be negative!!"); //dont allow withdrawing negative money
-			amount = sc.nextDouble();
-		}
 		if (amount > usr.getBalance()) { //dont allow withdraw if balance will be negative
-			System.out.println("Sorry! insufficient balance");
+			System.out.print("\nSorry!! insufficient balance");
 		} else {
 			usr.setBalance(usr.getBalance() - amount);
-			System.out.println("Transaction successful!");
+			System.out.print("\nTransaction successful!");
 		}
 		
 	}
@@ -41,22 +39,20 @@ public class BalanceServiceImpl implements BalanceService {
 	public void deposit(User usr, Database db, Scanner sc) {
 		double amount;
 		while (true){
-			System.out.println("Enter Amount: ");
+			System.out.println("\nEnter Amount: ");
 			try{
 				amount = sc.nextDouble();
+				if (amount >=0)
 				break;
+				else 
+					System.out.println("\nAmount can't be negative!!");
 			}
 			catch (InputMismatchException e){}
 			System.out.println("Please enter a number.");
 			sc.nextLine();
 		}
-		while (amount < 0) { //dont allow entering negative numbers
-			System.out.println("Amount can't be negative!!");
-			System.out.println("Enter Amount: ");
-			amount = sc.nextDouble();
-		}
 		usr.setBalance(usr.getBalance() + amount);
-		System.out.printf("%.2f dollar deposited successfully!!!\n", amount);
+		System.out.printf("\n%.2f dollar deposited successfully!!!\n", amount);
 		
 	}
 
