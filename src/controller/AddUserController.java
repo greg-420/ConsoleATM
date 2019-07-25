@@ -10,20 +10,20 @@ import pojo.Database;
 public class AddUserController {
 
 
-	boolean enterPass(Scanner sc, User refUser) {
-		System.out.println("Enter Password: ");
+	void enterPass(Scanner sc, User refUser) {
+		System.out.print("Enter Password: ");
 		String pass1 = sc.nextLine();
-		System.out.println("Re-type Password: ");
+		System.out.print("Re-type Password: ");
 		String pass2 = sc.nextLine();
-		if (pass1.equals(pass2))
+		int counter = 0;
+		while (!pass1.equals(pass2) && counter < 10) //keep prompting for password 
 		{
-			refUser.setString(1, pass2);
-			return true;
+			System.out.println("Password doesn't match!!");
+			System.out.print("Re-type Password: ");
+			pass2 = sc.nextLine();
+			counter++;
 		}
-		else {
-			System.out.println("Password doesn't match!");
-			return false;
-		}
+		refUser.setString(1, pass2);
 	}
 
 	void enterEmail(Scanner sc, User refUser) {
@@ -33,9 +33,10 @@ public class AddUserController {
 	}
 
 	void enterColor(Scanner sc, User refUser) {
-		System.out.println("What is your favourite colour?");
+		System.out.print("What is your favourite colour? ");
 		String color = sc.nextLine();
 		refUser.setString(3, color);
+		System.out.println(color + " is your security key, incase if you forget your password.");
 	}
 
 	void enterString(int arg, Scanner sc, User refUser ) {
@@ -45,6 +46,9 @@ public class AddUserController {
 		
 		if (arg == 2)
 			enterEmail(sc, refUser);
+		
+		if (arg == 3)
+			enterColor(sc, refUser);
 		return;
 	}
 
@@ -58,13 +62,15 @@ public class AddUserController {
 		
 		//ask for email
 		enterString(2, sc, refUser); 
-		if (refAddUser.checkEmail(refUser.getString(2), refDB)) //todo: swap logic. pass all checks then add user.
-			refAddUser.addUser(refUser, refDB);
-		else System.out.println("email already exists!!");
-		
-		//ask for password
+		while (!refAddUser.checkEmail(refUser.getString(2), refDB)) //todo: swap logic. pass all checks then add user.
+			{	
+				System.out.println("email already exists!!");
+				enterString(2, sc, refUser);
+			}
 		enterString(1, sc, refUser);
-		//check the password
+		enterString(3, sc, refUser);
+		
+		refAddUser.addUser(refUser, refDB);
 		
 		refDB.printUsers();
 		refDB.printNumUsers();
