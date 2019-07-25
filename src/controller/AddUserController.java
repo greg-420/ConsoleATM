@@ -60,7 +60,7 @@ public class AddUserController {
 		
 		//ask for email
 		enterString(2, sc, refUser); 
-		while (!refAddUser.checkEmail(refUser.getString(2), refDB)) //todo: swap logic. pass all checks then add user.
+		while (!refAddUser.checkEmail(refUser.getString(2), refDB))
 			{	
 				System.out.println("email already exists!!");
 				enterString(2, sc, refUser);
@@ -69,6 +69,7 @@ public class AddUserController {
 		enterString(3, sc, refUser);
 		
 		refAddUser.addUser(refUser, refDB);
+		System.out.println("\nRegistration sucessful!!");
 		
 //		refDB.printUsers();
 //		refDB.printNumUsers();
