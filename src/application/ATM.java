@@ -18,20 +18,30 @@ public class ATM {
 		int arg;
 
 		Database refDB = new Database();
+		User dummy = new User();
+		
+		//add a dummy user
+		dummy.setString(1, "defaultpass");
+		dummy.setString(2, "xyz@gmail.com");
+		dummy.setString(3, "defaultcolour");
+		refDB.addUser(dummy);
 		
 		do{ //repeatedly ask user for instructions from the main menu
 				Scanner sc = new Scanner(System.in);
 				while (true){ //if user inputs an invalid option, catch the exception and ask again.
-				System.out.println("\nUser Home Page: \n1. Register \n2. Login \n3. Forget Password \n4. Logout (exit)\n\nEnter Your Choice: ");
+				System.out.print("\nUser Home Page: \n1. Register \n2. Login \n3. Forget Password \n4. Logout (exit)\n\nEnter Your Choice: ");
 				
-					try {arg = sc.nextInt(); break;}
+					try {
+							arg = sc.nextInt(); 
+							sc.nextLine();
+							break;
+						}
 					catch (InputMismatchException e){
 						//do nothing here
 					}
 				System.out.println ("Error! Please enter an integer between 1 and 4. ");
 				sc.nextLine();
 				} 
-				sc.nextLine();
 				if (arg == 1) { //case: register.
 					AddUserController refAddUserController = new AddUserController();
 					refAddUserController.userInput(refDB, sc);

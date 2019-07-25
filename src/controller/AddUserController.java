@@ -11,14 +11,14 @@ public class AddUserController {
 
 
 	void enterPass(Scanner sc, User refUser) {
-		System.out.print("Enter Password: ");
+		System.out.print("\nEnter Password: ");
 		String pass1 = sc.nextLine();
 		System.out.print("Re-type Password: ");
 		String pass2 = sc.nextLine();
 		int counter = 0;
 		while (!pass1.equals(pass2) && counter < 10) //keep prompting for password 
 		{
-			System.out.println("Password doesn't match!!");
+			System.out.println("\nPassword doesn't match!!");
 			System.out.print("Re-type Password: ");
 			pass2 = sc.nextLine();
 			counter++;
@@ -27,16 +27,16 @@ public class AddUserController {
 	}
 
 	void enterEmail(Scanner sc, User refUser) {
-		System.out.print("Enter email address: ");
+		System.out.print("\nEnter email address: ");
 		String email = sc.nextLine();
 		refUser.setString(2, email);
 	}
 
 	void enterColor(Scanner sc, User refUser) {
-		System.out.print("What is your favourite colour? ");
+		System.out.print("\nWhat is favourite colour? ");
 		String color = sc.nextLine();
 		refUser.setString(3, color);
-		System.out.println(color + " is your security key, incase if you forget your password.");
+		System.out.print(color + " is your security key, incase if you forget your password.");
 	}
 
 	void enterString(int arg, Scanner sc, User refUser ) {
@@ -69,9 +69,8 @@ public class AddUserController {
 		enterString(3, sc, refUser);
 		
 		refAddUser.addUser(refUser, refDB);
-		System.out.println("\nRegistration sucessful!!");
-		
-//		refDB.printUsers();
-//		refDB.printNumUsers();
+		System.out.println("\n\nRegistration successful!!");
+		refDB.printUsers();
+		refDB.printNumUsers();
 	} //if you pass all the checks, then you are added as a new user. 
 }

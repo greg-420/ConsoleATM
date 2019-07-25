@@ -40,7 +40,7 @@ public class Database {
 	public User searchUser(String email){
 		for (User element: userDatabase)
 		{
-			if (element.getString(2).equals(email));
+			if (element.getString(2).equals(email))
 			return element;
 		}
 		return null;

@@ -10,9 +10,9 @@ public class LoginDAOImpl implements LoginDAO {
 		User tempusr = db.searchUser(email);
 		if (tempusr == null)
 			return null;
-		if (tempusr.getString(1).equals(password))
+		else if ((tempusr.getString(1)).equals(password))
 			return tempusr;
-		return null;
+		else return null;
 	}
 
 }
