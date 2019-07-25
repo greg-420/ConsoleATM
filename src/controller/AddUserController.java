@@ -52,11 +52,9 @@ public class AddUserController {
 		return;
 	}
 
-	public void userInput(Database refDB) {
-		System.out.println("Creating new user");
+	public void userInput(Database refDB, Scanner sc) {
 		
 		//intialize variables
-		Scanner sc = new Scanner(System.in);
 		User refUser = new User();
 		AddUserService refAddUser = new AddUserServiceImpl();
 		
@@ -72,7 +70,7 @@ public class AddUserController {
 		
 		refAddUser.addUser(refUser, refDB);
 		
-		refDB.printUsers();
-		refDB.printNumUsers();
+//		refDB.printUsers();
+//		refDB.printNumUsers();
 	} //if you pass all the checks, then you are added as a new user. 
 }

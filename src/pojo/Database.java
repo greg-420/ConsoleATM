@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Database {
-	List<User> userDatabase = new ArrayList<User> ();
+	private List<User> userDatabase = new ArrayList<User> ();
 	
 	public void addUser(User refUser){
 		userDatabase.add(refUser);
@@ -35,5 +35,14 @@ public class Database {
 				return false;
 		}
 		return true;
+	}
+	
+	public User searchUser(String email){
+		for (User element: userDatabase)
+		{
+			if (element.getString(2).equals(email));
+			return element;
+		}
+		return null;
 	}
 }

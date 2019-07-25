@@ -8,5 +8,6 @@ public class ForgetPasswordController {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Forgot Password Menu");
 		System.out.print("Enter your ID: ");
-		}
+		//call service layer
+	}
 }
